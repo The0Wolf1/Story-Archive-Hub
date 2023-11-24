@@ -1,0 +1,12 @@
+<div class="banner">
+    <h1 class="main-heading">Story Archive Hub</h1>
+    <h2> The hub for stories </h2>
+</div>
+
+<h3 class="main-heading"><%= @story.title %></h3>
+
+<p class="description"><%= @story.description%></p>
+<p><%= @story.content %></p>
+
+<%= link_to 'Back to Stories', stories_path, class: 'button' %>
+<%= button_to 'Delete Story', story_path(@story), method: :delete, data: { confirm: 'Are you sure you want to delete this story?' }, class: 'delete-button' %>

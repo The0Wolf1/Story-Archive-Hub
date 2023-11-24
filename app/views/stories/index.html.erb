@@ -1,0 +1,15 @@
+<div class="banner">
+    <h1 class="main-heading">Story Archive Hub</h1>
+    <h2> The hub for stories </h2>
+</div>
+
+<ul>
+    <% @stories.each do |story| %>
+        <li>
+            <h3><%= link_to story.title, story_path(story), class: 'button-link' %></h3>
+            <p class="description"><%= story.description%></p>
+        </li>
+    <% end %>
+</ul>
+
+<%= link_to 'New Story', new_story_path, class: 'button' %>

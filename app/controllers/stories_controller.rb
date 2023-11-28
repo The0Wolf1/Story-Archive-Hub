@@ -9,16 +9,25 @@ class StoriesController < ApplicationController
 
     def new
         @story = Story.new
+        @step = params[:step] || 'details'
     end
 
     def create
         @story = Story.new(story_params)
-        if @story.save
-            redirect_to @story
+        @step = params[:step] || 'details'
+    
+        if @story.save(context: @step.to_sym)
+          if @step == 'details'
+            # Redirect to the editor step if details are successfully saved
+            redirect_to new_story_path(step: 'editor')
+          else
+            # Redirect to the index or wherever you want after completing the creation process
+            redirect_to stories_path, notice: 'Story was successfully created.'
+          end
         else
-            render 'new'
+          render :new
         end
-    end
+      end
 
     def destroy
         @story = Story.find(params[:id])
@@ -30,6 +39,6 @@ class StoriesController < ApplicationController
     private
 
     def story_params
-        params.require(:story).permit(:title, :content, :description)
+        params.require(:story).permit(:title, :description, :content, :step, :file)
     end
 end

@@ -1,24 +1,11 @@
 <h1>New Story</h1>
 
-<%= form_with(model: @story, url: stories_path, method: :post) do |form| %>
-    <div>
-        <%= form.label :title%>
-        <%= form.text_field :title%>
-    </div>
-
-    <div>
-        <%= form.label :description %>
-        <%= form.text_area :description%>
-    </div>
-
-    <div>
-        <%= form.label :content%>
-        <%= form.text_area :content %>
-    </div>
-
-    <div>
-        <%= form.submit 'Create Story' %>
-    </div>
+<% if @step == 'details' %>
+  <!-- Form for the details step -->
+  <%= render 'details_form' %>
+<% elsif @step == 'editor' %>
+  <!-- Form for the editor step -->
+  <%= render 'editor_form' %>
 <% end %>
 
 <%= link_to 'Back to Stories', stories_path %>

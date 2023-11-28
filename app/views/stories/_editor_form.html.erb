@@ -1,0 +1,10 @@
+<%= form_with(model: @story, url: stories_path(step: 'editor'), method: :post) do |form| %>
+  <div>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div>
+    <%= form.submit 'Create Story' %>
+  </div>
+<% end %>

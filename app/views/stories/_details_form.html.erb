@@ -1,0 +1,20 @@
+<%= form_with(model: @story, url: stories_path(step: 'details'), method: :post) do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :file %>
+    <%= form.file_field :file %>
+  </div>
+
+  <div>
+    <%= form.submit 'Next' %>
+  </div>
+<% end %>
